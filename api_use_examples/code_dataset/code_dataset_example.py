@@ -1,5 +1,9 @@
 import requests
 import os
+import sys
+sys.path.append("../..")
+from api_ip_addr import API_IP_ADDR
+from gpt_key import GPT_KEY
 
 def generate_headers(dir):
     fw = open(os.path.join(dir, 'headers.txt'), "w+")
@@ -12,16 +16,14 @@ def generate_headers(dir):
     fw.close()
 
 def main():
-    path="http://localhost:8000/code_dataset/run"
+    path=f"http://{API_IP_ADDR}/code_dataset/run"
     with open("bucky_sample.py", "r") as f:
         code = f.read()
 
     generate_headers("./data_sample")
     headers = "./data_sample/headers.txt"
 
-    gpt_key = "YOUR KEY HERE"
-
-    dict= {"input_code": code, "input_dataset": headers, "gpt_key": gpt_key}
+    dict= {"input_code": code, "input_dataset": headers, "gpt_key": GPT_KEY}
 
     r = requests.post(path, params=dict)
     print(r.text)
