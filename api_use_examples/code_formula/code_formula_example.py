@@ -1,9 +1,8 @@
 import requests
 import sys
 sys.path.append("../..")
-from api_ip_addr import GPT_KEY
-
-
+from api_ip_addr import API_IP_ADDR
+from gpt_key import GPT_KEY
 
 def main():
     path=f"http://{API_IP_ADDR}/code_formula/run"
