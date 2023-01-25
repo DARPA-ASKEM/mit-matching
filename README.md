@@ -50,7 +50,7 @@ This call matches each function name in a python script with the most relevant l
 
 - Request type: `POST`
 - Inputs:
-    - `input_code`, string: A python string repersented as a string.
+    - `input_code`, string: A python script repersented as a string.
     - `input_text`, string: A multi-line text description, represented as a string using `\n` to denote line breaks.
     - `gpt_key`, string: A key to the GPT-3 API.
 - Output: A list (nesting level 0) of lists (nesting level 1). For each list in nesting level 1:
