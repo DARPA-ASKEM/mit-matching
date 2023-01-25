@@ -11,7 +11,7 @@ def main():
     with open("formula.tex_idx", "r") as f:
         formula = f.read()
 
-    dict= {"input_code": code, "input_formula": formula, "gpt_key": GPT_KEY}
+    dict= {"input_code": code, "input_formulas": formula, "gpt_key": GPT_KEY}
 
     r = requests.post(path, params=dict)
     print(r.text)

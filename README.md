@@ -15,7 +15,7 @@ Concrete examples are available under the `api_use_example` directory, but here 
 
 ---
 
-### `/avail_check/run` (live)
+### `/avail_check/run` 
 
 This is just a sanity check call to ensure that you can communicate with our server. 
 
@@ -27,24 +27,25 @@ This is just a sanity check call to ensure that you can communicate with our ser
 
 ### `/code_dataset/run` (WIP)
 
-This call matches each function name in a python script with the most relevant column names from a list of dataset schemas.
+
+---
+
+### `/code_formula/run` 
+
+This call matches each line in a file that contains one LaTeX formula per line, with the most salient line of code from a python script.
 
 - Request type: `POST`
 - Inputs:
-    - `input_code`, string: A python string repersented as a string.
-    - `input_dataset`, string:
+    - `input_code`, string: A python script repersented as a string.
+    - `input_formulas`, string: A string containing LaTeX formulas separated by `\n` characters.
     - `gpt_key`, string: A key to the GPT-3 API.
 - Output: A list (nesting level 0) of lists (nesting level 1). For each list in nesting level 1:
-    - element 0, a string, is a function name parsed from `input_code`
-    - element 1 is a list (nesting level 2) of column names gathered from `input_dataset` represented as strings.
+    - element 0, a string, is one of the input formulas in `input_formulas`
+    - element 1 is a lnie of code from `input_code`.
 
 ---
 
-### `/code_formula/run` (WIP)
-
----
-
-### `/code_text/run` (live)
+### `/code_text/run`
 
 This call matches each function name in a python script with the most relevant lines of text from a text description.
 
