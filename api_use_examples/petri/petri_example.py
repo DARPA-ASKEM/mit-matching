@@ -13,13 +13,13 @@ def main():
     dict= {"code": code, "gpt_key": GPT_KEY}
 
     places = requests.post(base_path + "get_places", params=dict).text
-    print("Places: " + places)
+    print(f"Places: {places}\n------\n")
 
     params = requests.post(base_path + "get_parameters", params=dict).text
-    print("Parameters: " + params)
+    print(f"Parameters: {params}\n------\n")
 
     tran = requests.post(base_path + "get_transitions", params=dict).text
-    print("Transitions: " + tran)
+    print(f"Transitions: {tran}\n------\n")
 
     with open("section2.txt", "r") as f:
         text = f.read()
@@ -31,7 +31,7 @@ def main():
     for place in places:
         dict2["place"] = place
         desc = requests.post(base_path + "match_place_to_text", params=dict2).text
-        print(f"Description for {place}: {desc}")
+        print(f"Description for {place}: {desc}\n------\n")
         
 
 if __name__ == "__main__":
