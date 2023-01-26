@@ -28,11 +28,22 @@ def main():
 
     places = ast.literal_eval(places)
 
+    with open("sections34.txt", "r") as f:
+        text2 = f.read()
+
     for place in places:
         dict2["place"] = place
         desc = requests.post(base_path + "match_place_to_text", params=dict2).text
         print(f"Description for {place}: {desc}\n------\n")
-        
+
+    dict3= {"text": text2, "gpt_key": GPT_KEY}
+    
+    params = ast.literal_eval(params)
+
+    for param in params:
+        dict3["param"] = param
+        desc = requests.post(base_path + "init_param_from_text", params=dict3).text
+        print(f"Initial value for {param}: {desc}\n------\n")
 
 if __name__ == "__main__":
     main()
